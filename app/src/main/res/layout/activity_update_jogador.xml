@@ -5,38 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Jogadores">
+    tools:context=".UpdateJogador">
 
     <EditText
-        android:id="@+id/txNomeJoga"
+        android:id="@+id/editNomeJoga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Nome do Jogador"
-        android:minHeight="48dp" />
+        android:hint="Digite o Nome do Jogador" />
+
 
     <EditText
-        android:id="@+id/txFavClasse"
+        android:id="@+id/editClasseJoga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Classe Favorita"
-        android:minHeight="48dp" />
+        android:hint="Digite a Classe Favorita" />
+
 
     <Button
-        android:id="@+id/btnSalvarJoga"
+        android:id="@+id/atualizarJoga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Salvar Jogador"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/btnListarJogadores"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Listar Jogadores"
+        android:text="Atualizar Jogador"
         android:textAllCaps="false" />
 
 </LinearLayout>

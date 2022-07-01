@@ -17,9 +17,9 @@ public class BDHow extends SQLiteOpenHelper {
     //TABELA CHAR - Constantes
     private static final String TABELA_CHAR = "personagens";
     private static final String ID_CHAR = "idPersonagens";
-    private static final String NOME_CHAR = "nomesPersonagens";
-    private static final String CLASSE_CHAR = "classe";
-    private static final String RACA_CHAR = "raça";
+    private static final String NOME_CHAR = "NomePersonagem";
+    private static final String CLASSE_CHAR = "Classe";
+    private static final String RACA_CHAR = "Raca";
 
 
     //TABELA JOGADOR - Constantes
@@ -91,7 +91,7 @@ public class BDHow extends SQLiteOpenHelper {
         values.put(NOME_JOGA, nomeJoga);
         values.put(FAV_CLASSE, favClasse);
 
-        db.insert(TABELA_CHAR,null, values);
+        db.insert(TABELA_JOGA,null, values);
         db.close();
     }
 
@@ -103,7 +103,7 @@ public class BDHow extends SQLiteOpenHelper {
         values.put(NOME_CAMP, nomeCamp);
         values.put(SISTEMA, sistema);
 
-        db.insert(TABELA_CHAR,null, values);
+        db.insert(TABELA_CAMP,null, values);
         db.close();
     }
 
@@ -117,8 +117,10 @@ public class BDHow extends SQLiteOpenHelper {
     }
     //-----------------------------------------------------------------------------
 
+    //-----------------Metodo para ler os registros-----------------------------
 
 
+    //Ler registros dos personagens
     public ArrayList<personagem> mostrarPersonagens() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -135,4 +137,87 @@ public class BDHow extends SQLiteOpenHelper {
         personagens.close();
         return personagemArrayList;
     }
+
+    //Ler registros dos jogadores
+    public ArrayList<jogador> mostrarJogador() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor jogadores = db.rawQuery("SELECT * FROM " + TABELA_JOGA, null);
+        ArrayList<jogador> jogadorArrayList = new ArrayList<>();
+
+        if (jogadores.moveToFirst()) {
+            do {
+                jogadorArrayList.add(new jogador(jogadores.getString(1),
+                        jogadores.getString(2)));
+            } while (jogadores.moveToNext());
+        }
+        jogadores.close();
+        return jogadorArrayList;
+    }
+
+    //Ler registros das campanhas
+    public ArrayList<campanha> mostrarCampanha() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor campanhas = db.rawQuery("SELECT * FROM " + TABELA_CAMP, null);
+        ArrayList<campanha> campanhaArrayList = new ArrayList<>();
+
+        if (campanhas.moveToFirst()) {
+            do {
+                campanhaArrayList.add(new campanha(campanhas.getString(1),
+                        campanhas.getString(2)));
+            } while (campanhas.moveToNext());
+        }
+        campanhas.close();
+        return campanhaArrayList;
+    }
+
+
+    //----------------------------------------------------------------------------------------------
+
+
+    //Editar registros
+
+
+    //Editar registros de Personagens
+    public void updatePersonagem(String originalPersonagem, String nomeChar, String classeChar,
+                             String racaChar) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_CHAR, nomeChar);
+        values.put(CLASSE_CHAR, classeChar);
+        values.put(RACA_CHAR, racaChar);
+
+        db.update(TABELA_CHAR, values, "NomePersonagem=?", new String[]{originalPersonagem});
+        db.close();
+    }
+
+    //Editar registros de Jogador
+    public void updateJogador(String originalJogador, String nomeJogador, String classeJogador) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_JOGA, nomeJogador);
+        values.put(FAV_CLASSE, classeJogador);
+
+        db.update(TABELA_JOGA, values, "nomeJogador=?", new String[]{originalJogador});
+        db.close();
+    }
+
+    //Editar registros de Campanha
+    public void updateCampanha(String originalCampanha, String nomeCamp, String sistemaCamp) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_CAMP, nomeCamp);
+        values.put(SISTEMA, sistemaCamp);
+
+        db.update(TABELA_CAMP, values, "NomePersonagem=?", new String[]{originalCampanha});
+        db.close();
+    }
+
 }

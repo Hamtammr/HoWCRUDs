@@ -1,6 +1,8 @@
 package com.example.howcruds;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +13,7 @@ public class Campanhas extends AppCompatActivity {
 
 
     private EditText nomeCampTxtEdit, sistemaTxtEdit;
-    private Button salvarCampbtn;
+    private Button salvarCampbtn,listarCampbtn;
     private BDHow bdHow;
 
     @Override
@@ -21,6 +23,7 @@ public class Campanhas extends AppCompatActivity {
 
         nomeCampTxtEdit = findViewById(R.id.txNomeCamp);
         sistemaTxtEdit = findViewById(R.id.txSistema);
+        listarCampbtn = findViewById(R.id.btnListarCamp);
         salvarCampbtn = findViewById(R.id.btnSalvarCamp);
 
 
@@ -41,6 +44,13 @@ public class Campanhas extends AppCompatActivity {
                 Toast.makeText(Campanhas.this, "Campanha adicionada.", Toast.LENGTH_SHORT).show();
                 nomeCampTxtEdit.setText("");
                 sistemaTxtEdit.setText("");
+            }
+        });
+        listarCampbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Campanhas.this, ListarCampanhas.class);
+                startActivity(i);
             }
         });
     }

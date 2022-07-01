@@ -1,11 +1,15 @@
 package com.example.howcruds;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.howcruds.databinding.ActivityUpdatePersonagemBinding;
+
 import java.util.ArrayList;
 
 public class personagemAdapter extends RecyclerView.Adapter<personagemAdapter.ViewHolder> {
@@ -31,6 +35,19 @@ public class personagemAdapter extends RecyclerView.Adapter<personagemAdapter.Vi
         holder.persoNome.setText(modal.getCharNome());
         holder.persoClasse.setText(modal.getCharClasse());
         holder.persoRaca.setText(modal.getCharRaca());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context, UpdatePersonagem.class);
+
+                i.putExtra("NomePersonagem", modal.getCharNome());
+                i.putExtra("Classe", modal.getCharClasse());
+                i.putExtra("Raca", modal.getCharRaca());
+
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
