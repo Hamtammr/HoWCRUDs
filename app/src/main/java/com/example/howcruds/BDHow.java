@@ -216,7 +216,7 @@ public class BDHow extends SQLiteOpenHelper {
         values.put(NOME_CAMP, nomeCamp);
         values.put(SISTEMA, sistemaCamp);
 
-        db.update(TABELA_CAMP, values, "NomePersonagem=?", new String[]{originalCampanha});
+        db.update(TABELA_CAMP, values, "nomeCampanha=?", new String[]{originalCampanha});
         db.close();
     }
 

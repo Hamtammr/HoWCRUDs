@@ -47,7 +47,7 @@ public class UpdateJogador extends AppCompatActivity {
 
                 Toast.makeText(UpdateJogador.this, "Jogador Atualizado", Toast.LENGTH_SHORT).show();
 
-                Intent i = new Intent(UpdateJogador.this, Personagens.class);
+                Intent i = new Intent(UpdateJogador.this, Jogadores.class);
                 startActivity(i);
             }
         });

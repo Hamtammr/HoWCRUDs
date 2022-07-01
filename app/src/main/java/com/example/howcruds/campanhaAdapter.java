@@ -1,5 +1,6 @@
 package com.example.howcruds;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,18 @@ public class campanhaAdapter extends RecyclerView.Adapter<campanhaAdapter.ViewHo
         campanha modalcamp = campanhaArrayList.get(position);
         holder.campNomee.setText(modalcamp.getCampNome());
         holder.campSistema.setText(modalcamp.getSistema());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(context, UpdateCampanha.class);
+
+                i.putExtra("nomeCampanha", modalcamp.getCampNome());
+                i.putExtra("sistema", modalcamp.getSistema());
+
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

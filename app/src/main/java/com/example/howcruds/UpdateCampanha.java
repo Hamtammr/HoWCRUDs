@@ -1,14 +1,55 @@
 package com.example.howcruds;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.howcruds.BDHow;
+import com.example.howcruds.Personagens;
+import com.example.howcruds.R;
 
 public class UpdateCampanha extends AppCompatActivity {
+
+    private EditText editNomeCamp, editSistema;
+    private Button atualizarCamp;
+    private BDHow dbHandler;
+    String nomeCamp, sistemaCamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_campanha);
+
+        editNomeCamp = findViewById(R.id.editNomeCamp);
+        editSistema = findViewById(R.id.editSistema);
+        atualizarCamp = findViewById(R.id.atualizarCamp);
+
+        dbHandler = new BDHow(UpdateCampanha.this);
+
+
+        nomeCamp = getIntent().getStringExtra("nomeCampanha");
+        sistemaCamp = getIntent().getStringExtra("sistema");
+
+
+        editNomeCamp.setText(nomeCamp);
+        editSistema.setText(sistemaCamp);
+
+        atualizarCamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dbHandler.updateCampanha(nomeCamp, editNomeCamp.getText().toString(), editSistema.getText().toString());
+
+                Toast.makeText(UpdateCampanha.this, "Campanha Atualizada", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(UpdateCampanha.this, Campanhas.class);
+                startActivity(i);
+            }
+        });
     }
 }
