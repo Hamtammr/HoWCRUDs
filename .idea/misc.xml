@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_campanhas.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_jogadores.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_listar_campanhas.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_listar_jogadores.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_listar_personagens.xml" value="0.24909420289855072" />
         <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_main.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/activity_personagens.xml" value="0.25" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/campanha_rv.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/jogador_rv.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/hamta/AndroidStudioProjects/HoWCRUDs/app/src/main/res/layout/personagem_rv.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>

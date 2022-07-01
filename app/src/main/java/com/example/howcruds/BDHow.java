@@ -1,91 +1,138 @@
+package com.example.howcruds;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHandler extends SQLiteOpenHelper {
+import java.util.ArrayList;
 
-    // creating a constant variables for our database.
-    // below variable is for our database name.
-    private static final String DB_NAME = "coursedb";
+public class BDHow extends SQLiteOpenHelper {
 
-    // below int is our database version
-    private static final int DB_VERSION = 1;
+    private static final String NOME_BD = "howdb.db";
+    private static final int VERS_BD = 1;
 
-    // below variable is for our table name.
-    private static final String TABLE_NAME = "mycourses";
+    // ------------TABELAS-------------
 
-    // below variable is for our id column.
-    private static final String ID_COL = "id";
+    //TABELA CHAR - Constantes
+    private static final String TABELA_CHAR = "personagens";
+    private static final String ID_CHAR = "idPersonagens";
+    private static final String NOME_CHAR = "nomesPersonagens";
+    private static final String CLASSE_CHAR = "classe";
+    private static final String RACA_CHAR = "raça";
 
-    // below variable is for our course name column
-    private static final String NAME_COL = "name";
 
-    // below variable id for our course duration column.
-    private static final String DURATION_COL = "duration";
+    //TABELA JOGADOR - Constantes
+    private static final String TABELA_JOGA = "jogadores";
+    private static final String ID_JOGA = "idJogador";
+    private static final String NOME_JOGA = "nomeJogador";
+    private static final String FAV_CLASSE = "classeFavorita";
 
-    // below variable for our course description column.
-    private static final String DESCRIPTION_COL = "description";
+    //TABELA CAMPANHA - Constantes
+    private static final String TABELA_CAMP = "campanhas";
+    private static final String ID_CAMP = "idCampanha";
+    private static final String NOME_CAMP = "nomeCampanha";
+    private static final String SISTEMA = "sistema";
 
-    // below variable is for our course tracks column.
-    private static final String TRACKS_COL = "tracks";
+    public BDHow(Context context) {
+        super(context, NOME_BD, null, VERS_BD);
 
-    // creating a constructor for our database handler.
-    public DBHandler(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
     }
 
-    // below method is for creating a database by running a sqlite query
+
+    //Sequencia para criar as tabelas ao iniciar o banco de dados.
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // on below line we are creating
-        // an sqlite query and we are
-        // setting our column names
-        // along with their data types.
-        String query = "CREATE TABLE " + TABLE_NAME + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + NAME_COL + " TEXT,"
-                + DURATION_COL + " TEXT,"
-                + DESCRIPTION_COL + " TEXT,"
-                + TRACKS_COL + " TEXT)";
 
-        // at last we are calling a exec sql
-        // method to execute above sql query
-        db.execSQL(query);
+        String criarTabelaChar = "CREATE TABLE " + TABELA_CHAR + " ("
+                + ID_CHAR + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NOME_CHAR + " TEXT,"
+                + CLASSE_CHAR + " TEXT,"
+                + RACA_CHAR + " TEXT)";
+
+        String criarTabelaJoga = "CREATE TABLE " + TABELA_JOGA+ " ("
+                + ID_JOGA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NOME_JOGA + " TEXT,"
+                + FAV_CLASSE + " TEXT)";
+
+        String criarTabelaCamp = "CREATE TABLE " + TABELA_CAMP + " ("
+                + ID_CAMP + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NOME_CAMP + " TEXT,"
+                + SISTEMA + " TEXT)";
+
+        db.execSQL(criarTabelaChar);
+        db.execSQL(criarTabelaJoga);
+        db.execSQL(criarTabelaCamp);
     }
 
-    // this method is use to add new course to our sqlite database.
-    public void addNewCourse(String courseName, String courseDuration, String courseDescription, String courseTracks) {
+    //--------------Comandos de [C]RUD--------------------------------
 
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
+    public void inserirPersonagem(String  nomeChar, String classeChar, String racaChar){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // on below line we are creating a
-        // variable for content values.
         ContentValues values = new ContentValues();
 
-        // on below line we are passing all values
-        // along with its key and value pair.
-        values.put(NAME_COL, courseName);
-        values.put(DURATION_COL, courseDuration);
-        values.put(DESCRIPTION_COL, courseDescription);
-        values.put(TRACKS_COL, courseTracks);
+        values.put(NOME_CHAR, nomeChar);
+        values.put(CLASSE_CHAR, classeChar);
+        values.put(RACA_CHAR, racaChar);
 
-        // after adding all values we are passing
-        // content values to our table.
-        db.insert(TABLE_NAME, null, values);
+        db.insert(TABELA_CHAR,null, values);
+        db.close();
 
-        // at last we are closing our
-        // database after adding database.
+
+    }
+
+    public void inserirJogador(String nomeJoga, String favClasse){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_JOGA, nomeJoga);
+        values.put(FAV_CLASSE, favClasse);
+
+        db.insert(TABELA_CHAR,null, values);
+        db.close();
+    }
+
+    public void inserirCampanha(String nomeCamp, String sistema){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(NOME_CAMP, nomeCamp);
+        values.put(SISTEMA, sistema);
+
+        db.insert(TABELA_CHAR,null, values);
         db.close();
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // this method is called to check if the table exists already.
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+    public void onUpgrade(SQLiteDatabase db, int oldVers, int newVers) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_CHAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_JOGA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA_CAMP);
+
         onCreate(db);
+    }
+    //-----------------------------------------------------------------------------
+
+
+
+    public ArrayList<personagem> mostrarPersonagens() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor personagens = db.rawQuery("SELECT * FROM " + TABELA_CHAR, null);
+        ArrayList<personagem> personagemArrayList = new ArrayList<>();
+
+        if (personagens.moveToFirst()) {
+            do {
+                personagemArrayList.add(new personagem(personagens.getString(1),
+                        personagens.getString(2),
+                        personagens.getString(3)));
+            } while (personagens.moveToNext());
+        }
+        personagens.close();
+        return personagemArrayList;
     }
 }

@@ -14,6 +14,26 @@
         android:theme="@style/Theme.HoWCRUDs"
         tools:targetApi="31">
         <activity
+            android:name=".ListarCampanhas"
+            android:exported="false" />
+        <activity
+            android:name=".ListarJogadores"
+            android:exported="false" />
+        <activity
+            android:name=".ListarPersonagens"
+            android:exported="false" />
+        <activity
+            android:name=".Campanhas"
+            android:exported="false"
+            android:label="@string/title_activity_campanhas"
+            android:theme="@style/Theme.HoWCRUDs.NoActionBar" />
+        <activity
+            android:name=".Jogadores"
+            android:exported="false" />
+        <activity
+            android:name=".Personagens"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
