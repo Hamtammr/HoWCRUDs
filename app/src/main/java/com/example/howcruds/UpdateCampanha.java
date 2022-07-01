@@ -16,7 +16,7 @@ import com.example.howcruds.R;
 public class UpdateCampanha extends AppCompatActivity {
 
     private EditText editNomeCamp, editSistema;
-    private Button atualizarCamp;
+    private Button atualizarCamp,deletarCamp;
     private BDHow dbHandler;
     String nomeCamp, sistemaCamp;
 
@@ -27,6 +27,7 @@ public class UpdateCampanha extends AppCompatActivity {
 
         editNomeCamp = findViewById(R.id.editNomeCamp);
         editSistema = findViewById(R.id.editSistema);
+        deletarCamp =findViewById(R.id.deletarCamp);
         atualizarCamp = findViewById(R.id.atualizarCamp);
 
         dbHandler = new BDHow(UpdateCampanha.this);
@@ -41,12 +42,21 @@ public class UpdateCampanha extends AppCompatActivity {
 
         atualizarCamp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
 
                 dbHandler.updateCampanha(nomeCamp, editNomeCamp.getText().toString(), editSistema.getText().toString());
 
                 Toast.makeText(UpdateCampanha.this, "Campanha Atualizada", Toast.LENGTH_SHORT).show();
 
+                Intent i = new Intent(UpdateCampanha.this, Campanhas.class);
+                startActivity(i);
+            }
+        });
+        deletarCamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.deleteCampanha(nomeCamp);
+                Toast.makeText(UpdateCampanha.this, "Campanha Excluido", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(UpdateCampanha.this, Campanhas.class);
                 startActivity(i);
             }

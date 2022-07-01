@@ -37,4 +37,12 @@
         android:text="Atualizar Personagem"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/deletarChar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Excluir Personagem"
+        android:textAllCaps="false" />
+
 </LinearLayout>

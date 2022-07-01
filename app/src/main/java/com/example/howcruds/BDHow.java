@@ -66,7 +66,7 @@ public class BDHow extends SQLiteOpenHelper {
         db.execSQL(criarTabelaCamp);
     }
 
-    //--------------Comandos de [C]RUD--------------------------------
+    //---------------------------------Operações de Create------------------------------------------
 
     public void inserirPersonagem(String  nomeChar, String classeChar, String racaChar){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -115,9 +115,9 @@ public class BDHow extends SQLiteOpenHelper {
 
         onCreate(db);
     }
-    //-----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
-    //-----------------Metodo para ler os registros-----------------------------
+    //--------------------------------Operaçõess de Read--------------------------------------------
 
 
     //Ler registros dos personagens
@@ -176,7 +176,7 @@ public class BDHow extends SQLiteOpenHelper {
     //----------------------------------------------------------------------------------------------
 
 
-    //Editar registros
+    //-------------------------------------Operações de Delete--------------------------------------
 
 
     //Editar registros de Personagens
@@ -219,5 +219,37 @@ public class BDHow extends SQLiteOpenHelper {
         db.update(TABELA_CAMP, values, "nomeCampanha=?", new String[]{originalCampanha});
         db.close();
     }
+
+    //----------------------------------------------------------------------------------------------
+
+
+
+    //------------------------------------Operações de Delete---------------------------------------
+
+
+    public void deletePersonagem(String nomePerso) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABELA_CHAR, "NomePersonagem=?", new String[]{nomePerso});
+        db.close();
+    }
+
+    public void deleteJogador(String nomeJoga) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABELA_JOGA, "nomeJogador=?", new String[]{nomeJoga});
+        db.close();
+    }
+
+    public void deleteCampanha(String nomeCamp) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABELA_CAMP, "nomeCampanha=?", new String[]{nomeCamp});
+        db.close();
+    }
+
+
+
+
 
 }

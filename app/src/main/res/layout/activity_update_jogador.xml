@@ -31,4 +31,12 @@
         android:text="Atualizar Jogador"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/deletarJoga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Excluir Jogador"
+        android:textAllCaps="false" />
+
 </LinearLayout>

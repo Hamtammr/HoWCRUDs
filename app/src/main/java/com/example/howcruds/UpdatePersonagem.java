@@ -16,7 +16,7 @@ import com.example.howcruds.R;
 public class UpdatePersonagem extends AppCompatActivity {
 
     private EditText editNomePerso, editClassePerso, editRacaPerso;
-    private Button atualizarPerso;
+    private Button atualizarPerso, deletarPerso;
     private BDHow dbHandler;
     String nomeChar, classeChar, racaChar;
 
@@ -28,6 +28,7 @@ public class UpdatePersonagem extends AppCompatActivity {
         editNomePerso = findViewById(R.id.editNomeChar);
         editClassePerso = findViewById(R.id.editClasseChar);
         editRacaPerso = findViewById(R.id.editRacaChar);
+        deletarPerso = findViewById(R.id.deletarChar);
         atualizarPerso = findViewById(R.id.atualizarChar);
 
         dbHandler = new BDHow(UpdatePersonagem.this);
@@ -50,6 +51,16 @@ public class UpdatePersonagem extends AppCompatActivity {
 
                 Toast.makeText(UpdatePersonagem.this, "Personagem Atualizado", Toast.LENGTH_SHORT).show();
 
+                Intent i = new Intent(UpdatePersonagem.this, Personagens.class);
+                startActivity(i);
+            }
+        });
+
+        deletarPerso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.deletePersonagem(nomeChar);
+                Toast.makeText(UpdatePersonagem.this, "Personagem Excluido", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(UpdatePersonagem.this, Personagens.class);
                 startActivity(i);
             }

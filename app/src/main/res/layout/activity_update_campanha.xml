@@ -31,4 +31,12 @@
         android:text="Atualizar Campanha"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/deletarCamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Excluir Campanha"
+        android:textAllCaps="false" />
+
 </LinearLayout>
