@@ -1,4 +1,4 @@
-package com.example.howcruds;
+package com.example.howcruds.pers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.howcruds.BDHow;
-import com.example.howcruds.Personagens;
+import com.example.howcruds.MainActivity;
 import com.example.howcruds.R;
+import com.example.howcruds.jogs.UpdateJogador;
 
 public class UpdatePersonagem extends AppCompatActivity {
 
@@ -19,6 +20,9 @@ public class UpdatePersonagem extends AppCompatActivity {
     private Button atualizarPerso, deletarPerso;
     private BDHow dbHandler;
     String nomeChar, classeChar, racaChar;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +47,25 @@ public class UpdatePersonagem extends AppCompatActivity {
         editClassePerso.setText(classeChar);
         editRacaPerso.setText(racaChar);
 
+
+
         atualizarPerso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (editNomePerso.getText().toString().trim().length() > 0 && editClassePerso.getText().toString().trim().length() > 0 && editRacaPerso.getText().toString().trim().length() > 0 ){
                 dbHandler.updatePersonagem(nomeChar, editNomePerso.getText().toString(), editClassePerso.getText().toString(), editRacaPerso.getText().toString());
 
                 Toast.makeText(UpdatePersonagem.this, "Personagem Atualizado", Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(UpdatePersonagem.this, Personagens.class);
-                startActivity(i);
+                startActivity(i);}else {
+                    Toast.makeText(UpdatePersonagem.this, "Preencher todos os campos", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
+
 
         deletarPerso.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,4 +77,5 @@ public class UpdatePersonagem extends AppCompatActivity {
             }
         });
     }
+
 }

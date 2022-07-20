@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.howcruds.camp.Campanhas;
+import com.example.howcruds.jogs.Jogadores;
+import com.example.howcruds.pers.Personagens;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button button;

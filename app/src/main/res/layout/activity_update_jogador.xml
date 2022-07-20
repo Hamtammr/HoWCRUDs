@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UpdateJogador">
+    tools:context=".jogs.UpdateJogador">
 
     <EditText
         android:id="@+id/editNomeJoga"

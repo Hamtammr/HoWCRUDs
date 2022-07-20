@@ -14,33 +14,33 @@
         android:theme="@style/Theme.HoWCRUDs"
         tools:targetApi="31">
         <activity
-            android:name=".UpdateJogador"
+            android:name=".jogs.UpdateJogador"
             android:exported="false" />
         <activity
-            android:name=".UpdateCampanha"
+            android:name=".camp.UpdateCampanha"
             android:exported="false" />
         <activity
-            android:name=".UpdatePersonagem"
+            android:name=".pers.UpdatePersonagem"
             android:exported="false" />
         <activity
-            android:name=".ListarCampanhas"
+            android:name=".camp.ListarCampanhas"
             android:exported="false" />
         <activity
-            android:name=".ListarJogadores"
+            android:name=".jogs.ListarJogadores"
             android:exported="false" />
         <activity
-            android:name=".ListarPersonagens"
+            android:name=".pers.ListarPersonagens"
             android:exported="false" />
         <activity
-            android:name=".Campanhas"
+            android:name=".camp.Campanhas"
             android:exported="false"
             android:label="@string/title_activity_campanhas"
             android:theme="@style/Theme.HoWCRUDs.NoActionBar" />
         <activity
-            android:name=".Jogadores"
+            android:name=".jogs.Jogadores"
             android:exported="false" />
         <activity
-            android:name=".Personagens"
+            android:name=".pers.Personagens"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

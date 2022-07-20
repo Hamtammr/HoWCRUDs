@@ -1,4 +1,4 @@
-package com.example.howcruds;
+package com.example.howcruds.camp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.howcruds.BDHow;
+import com.example.howcruds.MainActivity;
+import com.example.howcruds.R;
+import com.example.howcruds.pers.Personagens;
 
 public class Campanhas extends AppCompatActivity {
 
@@ -53,5 +58,9 @@ public class Campanhas extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    public void onBackPressed(){
+        Intent i = new Intent(Campanhas.this, MainActivity.class);
+        startActivity(i);
     }
 }

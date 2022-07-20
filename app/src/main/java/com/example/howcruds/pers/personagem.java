@@ -1,4 +1,4 @@
-package com.example.howcruds;
+package com.example.howcruds.pers;
 
 public class personagem {
 

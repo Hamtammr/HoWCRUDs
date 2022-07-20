@@ -1,10 +1,13 @@
-package com.example.howcruds;
+package com.example.howcruds.jogs;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.howcruds.BDHow;
+import com.example.howcruds.R;
 
 import java.util.ArrayList;
 

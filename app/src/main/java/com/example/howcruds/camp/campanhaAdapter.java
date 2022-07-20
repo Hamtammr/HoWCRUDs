@@ -1,4 +1,4 @@
-package com.example.howcruds;
+package com.example.howcruds.camp;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.howcruds.R;
+
 import java.util.ArrayList;
 
 public class campanhaAdapter extends RecyclerView.Adapter<campanhaAdapter.ViewHolder> {

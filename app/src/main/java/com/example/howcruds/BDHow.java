@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.howcruds.camp.campanha;
+import com.example.howcruds.jogs.jogador;
+import com.example.howcruds.pers.personagem;
+
 import java.util.ArrayList;
 
 public class BDHow extends SQLiteOpenHelper {

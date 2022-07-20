@@ -1,4 +1,4 @@
-package com.example.howcruds;
+package com.example.howcruds.pers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.howcruds.BDHow;
+import com.example.howcruds.MainActivity;
+import com.example.howcruds.R;
 
 public class Personagens extends AppCompatActivity {
 
@@ -57,5 +61,9 @@ public class Personagens extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    public void onBackPressed(){
+        Intent i = new Intent(Personagens.this, MainActivity.class);
+        startActivity(i);
     }
 }
