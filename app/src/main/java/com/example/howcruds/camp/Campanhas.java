@@ -40,7 +40,7 @@ public class Campanhas extends AppCompatActivity {
                 String campNome = nomeCampTxtEdit.getText().toString();
                 String sistema = sistemaTxtEdit.getText().toString();
 
-                if (campNome.isEmpty() && sistema.isEmpty()) {
+                if (campNome.isEmpty() || sistema.isEmpty()) {
                     Toast.makeText(Campanhas.this, "Não deixe campos em branco", Toast.LENGTH_SHORT).show();
                     return;
                 }

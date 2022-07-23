@@ -42,7 +42,7 @@ public class Personagens extends AppCompatActivity {
                 String charClasse = classeCharTxtEdit.getText().toString();
                 String charRaca = racaTxtEdit.getText().toString();
 
-                if (charNome.isEmpty() && charClasse.isEmpty() && charRaca.isEmpty()) {
+                if (charNome.isEmpty() || charClasse.isEmpty() && charRaca.isEmpty()) {
                     Toast.makeText(Personagens.this, "Não deixe campos em branco", Toast.LENGTH_SHORT).show();
                     return;
                 }

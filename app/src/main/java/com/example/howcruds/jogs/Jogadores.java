@@ -40,7 +40,7 @@ public class Jogadores extends AppCompatActivity {
                 String jogaNome = nomeJogaTxtEdit.getText().toString();
                 String jogaFavClasse = favClasseTxtEdit.getText().toString();
 
-                if (jogaNome.isEmpty() && jogaFavClasse.isEmpty()) {
+                if (jogaNome.isEmpty() || jogaFavClasse.isEmpty()) {
                     Toast.makeText(Jogadores.this, "Não deixe campos em branco", Toast.LENGTH_SHORT).show();
                     return;
                 }
